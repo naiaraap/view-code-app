@@ -22,6 +22,7 @@
 		4C920FDC2A853B4E00211BFD /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 4C920FDB2A853B4E00211BFD /* SnapKit */; };
 		4C920FE12A85541600211BFD /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 4C920FE02A85541600211BFD /* SnapKit */; };
 		4C920FE52A85542D00211BFD /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 4C920FE42A85542D00211BFD /* SnapKit */; };
+		4C920FF52A8579CB00211BFD /* SnapshotTesting in Frameworks */ = {isa = PBXBuildFile; productRef = 4C920FF42A8579CB00211BFD /* SnapshotTesting */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -80,6 +81,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4C920FE52A85542D00211BFD /* SnapKit in Frameworks */,
+				4C920FF52A8579CB00211BFD /* SnapshotTesting in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -225,6 +227,7 @@
 			name = "view-code-appUITests";
 			packageProductDependencies = (
 				4C920FE42A85542D00211BFD /* SnapKit */,
+				4C920FF42A8579CB00211BFD /* SnapshotTesting */,
 			);
 			productName = "view-code-appUITests";
 			productReference = 4C501D972A83CDDC006B8280 /* view-code-appUITests.xctest */;
@@ -264,6 +267,7 @@
 			mainGroup = 4C501D6E2A83CDD7006B8280;
 			packageReferences = (
 				4C920FDA2A853B4E00211BFD /* XCRemoteSwiftPackageReference "SnapKit" */,
+				4C920FF32A8579CB00211BFD /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */,
 			);
 			productRefGroup = 4C501D782A83CDD7006B8280 /* Products */;
 			projectDirPath = "";
@@ -521,7 +525,8 @@
 		4C501DA52A83CDDD006B8280 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -540,7 +545,8 @@
 		4C501DA62A83CDDD006B8280 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -640,6 +646,14 @@
 				minimumVersion = 5.0.0;
 			};
 		};
+		4C920FF32A8579CB00211BFD /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pointfreeco/swift-snapshot-testing.git";
+			requirement = {
+				kind = upToNextMinorVersion;
+				minimumVersion = 1.9.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -657,6 +671,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 4C920FDA2A853B4E00211BFD /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
+		};
+		4C920FF42A8579CB00211BFD /* SnapshotTesting */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4C920FF32A8579CB00211BFD /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */;
+			productName = SnapshotTesting;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
