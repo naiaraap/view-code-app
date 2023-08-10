@@ -5,21 +5,16 @@
 //  Created by Naiara de Almeida Pantuza on 10/08/23.
 //
 
-import XCTest
-import SnapshotTesting
 
+import SnapshotTesting
+import XCTest
 @testable import view_code_app
 
-final class GridBoxUITests: XCTestCase {
-  
-  override func setUpWithError() throws {
-    continueAfterFailure = false
+class GridBoxUITests: XCTestCase {
+  func testGridBoxView() {
+    let view = GridBoxView()
+    view.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
+    
+        assertSnapshot(matching: view, as: .image, record: true)
   }
-  
-  func testGridBoxViewSnapshots() {
-    let frame = CGRect(x: 0, y: 0, width: 300, height: 300)
-    let view = GridBoxView(frame: frame)
-        assertSnapshot(matching: view, as: .image)
-  }
-  
 }
