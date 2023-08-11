@@ -15,6 +15,29 @@ final class GridBoxView: UIView {
     return view
   }()
   
+  lazy var textContainer: UIStackView = {
+    let view = UIStackView(frame: .zero)
+    view.axis = .vertical
+    view.distribution = .fillEqually
+    view.spacing = 8.0
+    return view
+  }()
+  
+  lazy var title: UILabel = {
+    let view = UILabel(frame: .zero)
+    view.text = "Title"
+    view.font = UIFont.systemFont(ofSize: 6, weight: .bold)
+    view.backgroundColor = .orange
+    return view
+  }()
+  
+  lazy var subtitle: UILabel = {
+    let view = UILabel(frame: .zero)
+    view.text = "Subtitle"
+    view.font = UIFont.systemFont(ofSize: 6, weight: .regular)
+    view.backgroundColor = .red
+    return view
+  }()
   
   override init(frame: CGRect = .zero) {
     super.init(frame: frame)
@@ -29,13 +52,22 @@ final class GridBoxView: UIView {
 extension GridBoxView: AddViewCodeElement {
   func buildViewHierarchy() {
     addSubview(imageView)
+    textContainer.addArrangedSubview(title)
+    textContainer.addArrangedSubview(subtitle)
+    addSubview(textContainer)
   }
   
   func setupConstraints() {
     imageView.snp.makeConstraints { make in
-      make.height.equalTo(50)
-      make.width.equalTo(50)
-      make.top.left.equalToSuperview().offset(20)
+      make.height.equalToSuperview().multipliedBy(0.7)
+      make.width.equalTo(imageView.snp.height)
+      make.centerX.equalToSuperview()
+    }
+    
+    textContainer.snp.makeConstraints { make in
+      make.width.equalTo(imageView.snp.width)
+      make.top.equalTo(imageView.snp.bottom).offset(8)
+      make.centerX.equalTo(imageView.snp.centerX)
     }
   }
 
