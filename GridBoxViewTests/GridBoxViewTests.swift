@@ -13,7 +13,7 @@ final class GridBoxViewTests: XCTestCase {
 
     func testGridBoxView() throws {
       let view = GridBoxView()
-      view.frame = CGRect(x: 0, y: 0, width: 100, height: 100) // Ajusta el tamaño según tus necesidades
+      view.frame = CGRect(x: 0, y: 0, width: 250, height: 300)
       
       assertSnapshot(matching: view, as: .image, record: false)
     }

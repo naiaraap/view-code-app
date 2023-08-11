@@ -17,6 +17,19 @@ final class ViewControllerScreen: UIView {
     return buttonView
   }()
   
+  private lazy var gridContainer: UIStackView = {
+    let stackView = UIStackView(frame: .zero)
+    stackView.axis = .horizontal
+    stackView.distribution = .fillEqually
+    stackView.spacing = 8
+    return stackView
+  }()
+  
+  
+  
+  let leftBox = GridBoxView()
+  let rightBox = GridBoxView()
+  
   override init(frame: CGRect = .zero) {
     super.init(frame: frame)
     setupView()
@@ -30,15 +43,24 @@ final class ViewControllerScreen: UIView {
 extension ViewControllerScreen: AddViewCodeElement {
   func buildViewHierarchy() {
     addSubview(button)
+    gridContainer.addArrangedSubview(leftBox)
+    gridContainer.addArrangedSubview(rightBox)
+    addSubview(gridContainer)
   }
   
   func setupConstraints() {
     let safeArea = self.safeAreaLayoutGuide
     
+    gridContainer.snp.makeConstraints { make in
+      make.leading.equalToSuperview().offset(15)
+      make.trailing.equalToSuperview().offset(-15)
+      make.centerY.equalToSuperview()
+    }
+    
     button.snp.makeConstraints { make in
-      make.leading.equalToSuperview().offset(16)
-      make.trailing.equalToSuperview().offset(-16)
-      make.bottom.equalTo(safeArea).offset(-16)
+      make.leading.equalToSuperview().offset(15)
+      make.trailing.equalToSuperview().offset(-15)
+      make.bottom.equalTo(safeArea).offset(-15)
       make.height.equalTo(50)
     }
   

@@ -15,7 +15,7 @@ final class GridBoxView: UIView {
     return view
   }()
   
-  lazy var textContainer: UIStackView = {
+  private lazy var textContainer: UIStackView = {
     let view = UIStackView(frame: .zero)
     view.axis = .vertical
     view.distribution = .fillEqually
@@ -58,17 +58,24 @@ extension GridBoxView: AddViewCodeElement {
   }
   
   func setupConstraints() {
+    title.snp.makeConstraints { make in
+      make.height.equalTo(20)
+    }
+    
+    subtitle.snp.makeConstraints { make in
+      make.height.equalTo(20)
+    }
+    
     imageView.snp.makeConstraints { make in
-      make.height.equalToSuperview().multipliedBy(0.7)
+      make.left.right.top.equalToSuperview()
       make.width.equalTo(imageView.snp.height)
-      make.centerX.equalToSuperview()
     }
     
     textContainer.snp.makeConstraints { make in
-      make.width.equalTo(imageView.snp.width)
+      make.left.bottom.right.equalToSuperview()
       make.top.equalTo(imageView.snp.bottom).offset(8)
-      make.centerX.equalTo(imageView.snp.centerX)
     }
+
   }
 
 func setupAdditionalConfiguration() {
